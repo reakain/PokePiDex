@@ -14,14 +14,14 @@ ecs = digitalio.DigitalInOut(board.D12)
 dc = digitalio.DigitalInOut(board.D16)
 srcs = digitalio.DigitalInOut(board.D6) # can be None to use internal memory
 rst = digitalio.DigitalInOut(board.D13) # can be None to not use this pin
-busy = digitalio.DigitalInOut(board.D5) # can be Nine to not use this pin
+#busy = digitalio.DigitalInOut(board.D5) # can be Nine to not use this pin
 
 # give them all to our driver
 print("Creating display")
 #display = Adafruit_SSD1608(200, 200, spi,             # 1.54" HD monochrome display
 display = Adafruit_IL0373(104, 212, spi,               # 2.13" Tri-color display
                            cs_pin=ecs, dc_pin=dc, sramcs_pin=srcs,
-                           rst_pin=rst, busy_pin=busy)
+                           rst_pin=rst, busy_pin=None) #busy_pin=busy)
 
 # IF YOU HAVE A FLEXIBLE DISPLAY (2.13" OR 2.9") uncommeny these lines!
 display.set_black_buffer(1, False)
