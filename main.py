@@ -100,15 +100,15 @@ def main():
 
 
 
-	print("Computing Mandlebrot fractal.")
-	fractal_image = fractal.get_fractal(epd.width, epd.height,
-										use_julia=False)
-	print("Displaying.")
-	if getattr(epd, 'colors', 2) > 2:
-		epd.display_frames(None, fractal_image.bit_buf)
-	else:
-		epd.display_bitmap(fractal_image, fast_ghosting=True)
-	del fractal_image
+    print("Computing Mandlebrot fractal.")
+    fractal_image = fractal.get_fractal(epd.width, epd.height,
+                                        use_julia=False)
+    print("Displaying.")
+    if getattr(epd, 'colors', 2) > 2:
+        epd.display_frames(None, fractal_image.bit_buf)
+    else:
+        epd.display_bitmap(fractal_image, fast_ghosting=True)
+    del fractal_image
 
 
     print("Done.")
