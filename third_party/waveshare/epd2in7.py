@@ -159,55 +159,104 @@ class EPD:
 
     def init(self):
         try:
+		    print("epdif.epd_io_bus_init()")
             epdif.epd_io_bus_init()
         except RuntimeError:
+		    print("epdif.epd_io_bus_init() exception")
             pass  # it avoids global io bus reinitialization.  good.
+	    print("self.reset_pin = epdif.RST_PIN")
         self.reset_pin = epdif.RST_PIN
+		print("self.dc_pin = epdif.DC_PIN")
         self.dc_pin = epdif.DC_PIN
+		print("self.busy_pin = epdif.BUSY_PIN")
         self.busy_pin = epdif.BUSY_PIN
+		print("EPD hardware init start")
         # EPD hardware init start
+		print("self.reset()")
         self.reset()
+		print("self.send_command(POWER_SETTING)")
         self.send_command(POWER_SETTING)
+		print("self.send_data(0x03)")
         self.send_data(0x03)                  # VDS_EN, VDG_EN
+		print("self.send_data(0x00) ")
         self.send_data(0x00)                  # VCOM_HV, VGHL_LV[1], VGHL_LV[0]
+		print("self.send_data(0x2b)")
         self.send_data(0x2b)                  # VDH
+		print("self.send_data(0x2b)")
         self.send_data(0x2b)                  # VDL
+		print("self.send_data(0x09)")
         self.send_data(0x09)                  # VDHR
+		print("self.send_command(BOOSTER_SOFT_START)")
         self.send_command(BOOSTER_SOFT_START)
+		print("self.send_data(0x07)")
         self.send_data(0x07)
+		print("self.send_data(0x07)")
         self.send_data(0x07)
+		print("self.send_data(0x17)")
         self.send_data(0x17)
+		print("Power optimization")
         # Power optimization
+		print("self.send_command(0xF8)")
         self.send_command(0xF8)
+		print("self.send_data(0x60)")
         self.send_data(0x60)
+		print("self.send_data(0xA5)")
         self.send_data(0xA5)
+		print("Power optimization")
         # Power optimization
+		print("self.send_command(0xF8)")
         self.send_command(0xF8)
+		print("self.send_data(0x89)")
         self.send_data(0x89)
+		print("self.send_data(0xA5)")
         self.send_data(0xA5)
+		print("Power optimization")
         # Power optimization
+		print("self.send_command(0xF8)")
         self.send_command(0xF8)
+		print("self.send_data(0x90)")
         self.send_data(0x90)
+		print("self.send_data(0x00)")
         self.send_data(0x00)
+		print("Power optimization")
         # Power optimization
+		print("self.send_command(0xF8)")
         self.send_command(0xF8)
+		print("self.send_data(0x93)")
         self.send_data(0x93)
+		print("self.send_data(0x2A)")
         self.send_data(0x2A)
+		print("Power optimization")
         # Power optimization
+		print("self.send_command(0xF8)")
         self.send_command(0xF8)
+		print("self.send_data(0xA0)")
         self.send_data(0xA0)
+		print("self.send_data(0xA5)")
         self.send_data(0xA5)
+		print("Power optimization")
         # Power optimization
+		print("self.send_command(0xF8)")
         self.send_command(0xF8)
+		print("self.send_data(0xA1)")
         self.send_data(0xA1)
+		print("self.send_data(0x00)")
         self.send_data(0x00)
+		print("Power optimization")
         # Power optimization
+		print("self.send_command(0xF8)")
         self.send_command(0xF8)
+		print("self.send_data(0x73)")
         self.send_data(0x73)
+		print("self.send_data(0x41)")
         self.send_data(0x41)
+		print("self.send_command(PARTIAL_DISPLAY_REFRESH)")
         self.send_command(PARTIAL_DISPLAY_REFRESH)
+		print("self.send_data(0x00)")
         self.send_data(0x00)
+		print("self.send_command(POWER_ON)")
         self.send_command(POWER_ON)
+		print("self.wait_until_idle()")
         self.wait_until_idle()
 
         self.send_command(PANEL_SETTING)
@@ -219,9 +268,11 @@ class EPD:
         self.delay_ms(2)
         self.set_lut()
         # EPD hardware init end
+		print("EPD hardware init end")
 
     def wait_until_idle(self):
         while self.busy_pin.value == 0:      # 0: busy, 1: idle
+		    print("EPD busy")
             self.delay_ms(10)
 
     def reset(self):
