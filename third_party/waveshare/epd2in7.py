@@ -271,7 +271,7 @@ class EPD:
         print("EPD hardware init end")
 
     def wait_until_idle(self):
-        while self.busy_pin.value == 0:      # 0: busy, 1: idle
+        while self.busy_pin.value == 1:      # 0: busy, 1: idle #flipped
             print("EPD busy")
             self.delay_ms(10)
 
