@@ -35,10 +35,10 @@ DC_PIN = board.D24
 CS_PIN = board.D25
 BUSY_PIN = board.D7
 
-#_SPI_MOSI = board.MOSI
-#_SPI_CLK = board.SCK
-_SPI_MOSI = board.A2
-_SPI_CLK = board.A3
+_SPI_MOSI = board.MOSI
+_SPI_CLK = board.SCK
+#_SPI_MOSI = board.A2
+#_SPI_CLK = board.A3
 _SPI_BUS = None
 _init = False
 
