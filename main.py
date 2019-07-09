@@ -50,7 +50,7 @@ def sample_keys():
     """
     DigitalInOut = digitalio.DigitalInOut
     Pull = digitalio.Pull
-    with DigitalInOut(board.D2) as key1, DigitalInOut(board.D3) as key2, \
+    """with DigitalInOut(board.D2) as key1, DigitalInOut(board.D3) as key2, \
             DigitalInOut(board.D4) as key3, DigitalInOut(board.D5) as key4:
         key1.switch_to_input(Pull.UP)
         key2.switch_to_input(Pull.UP)
@@ -58,7 +58,7 @@ def sample_keys():
         key4.switch_to_input(Pull.UP)
         for k in (key1, key2, key3, key4):
             yield not k.value  # False is pressed
-
+    """
 
 class StatusLED:
     """A simple interface to the onboard pixel."""
@@ -98,16 +98,8 @@ def main():
     else:
       print("Pure Python implementation loaded.")
 
-    keys = [1,]  # Print message on start.
-    while True:
-        if any(keys):
-            led.ready()
-            print("Awaiting key1-key4 button press.")
-        keys = list(sample_keys())
-        if any(keys):
-            led.busy()
 
-        if keys[0]:
+
             print("Computing Mandlebrot fractal.")
             fractal_image = fractal.get_fractal(epd.width, epd.height,
                                                 use_julia=False)
@@ -117,39 +109,7 @@ def main():
             else:
                 epd.display_bitmap(fractal_image, fast_ghosting=True)
             del fractal_image
-        elif keys[1]:
-            print("Setting display to white.")
-            epd.clear_frame_memory(0xff)
-            epd.display_frame()
-        elif keys[2]:
-            raw_framebuf = bytearray(epd.fb_bytes)
-            for pos in range(len(raw_framebuf)):
-                raw_framebuf[pos] = random.randint(0, 255)
-            print("Displaying random framebuf.")
-            if getattr(epd, 'colors', 2) <= 2:
-                epd.display_frame_buf(raw_framebuf, fast_ghosting=True)
-            else:
-                raw_framebuf2 = bytearray(epd.fb_bytes)
-                for pos in range(len(raw_framebuf2)):
-                    raw_framebuf2[pos] = random.randint(0, 255)
-                epd.display_frames(raw_framebuf, raw_framebuf2)
-                del raw_framebuf2
-            del raw_framebuf
-        elif keys[3]:
-            print("Computing Julia fractal.")
-            fractal_image = fractal.get_fractal(epd.width, epd.height,
-                                                use_julia=True)
-            print("Displaying.")
-            if getattr(epd, 'colors', 2) > 2:
-                epd.display_frames(fractal_image.bit_buf, None)
-            else:
-                epd.display_bitmap(fractal_image, fast_ghosting=True)
-            del fractal_image
-        else:
-            # This effectively debounces the keys, we merely sample them
-            # rather than treat a state change as an interrupt.  If a key
-            # is not pressed for this duration it may not be noticed.
-            time.sleep(0.05)  # short time between polling.
+
 
     print("Done.")
 
