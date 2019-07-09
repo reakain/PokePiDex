@@ -25,6 +25,9 @@ Raspberry Pi Zero Pokedex
 ## Info
 setup.sh script sets up raspberry pi settings
 
+## Notes
+Might need to switch to paplay, mplayer or ogg123 for audio files in ogg format
+
 ## Resources
 [Pokemon Cries and Sprites from Veekun] (https://github.com/veekun/pokedex)
 
