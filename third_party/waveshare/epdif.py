@@ -31,6 +31,7 @@ import board
 import digitalio
 
 # Pin definition as hooked up on raspberry pi zero
+RST_PIN = board.D22
 DC_PIN = board.D24
 CS_PIN = board.D25
 BUSY_PIN = board.D7
