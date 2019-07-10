@@ -9,8 +9,11 @@ Raspberry Pi Zero Pokedex
 - 5mm Green LED
 - 3mm Red LED x2
 - Raspberry Pi Zero
+
+### Power:
 - [Adafruit push button power switch](https://www.adafruit.com/product/1400)
-- LiPo battery charger [from Sparkfun](LINK) [or Adafruit](LINK)
+- LiPo battery charger from [Sparkfun](https://www.sparkfun.com/products/12711) or [Adafruit](https://www.adafruit.com/product/259)
+- [QI wireless charging module](https://www.adafruit.com/product/2114)
 
 ### Display:
 - [2.7" e-ink display from waveshare](https://www.waveshare.com/product/2.7inch-e-paper.htm)
