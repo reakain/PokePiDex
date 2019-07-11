@@ -54,7 +54,7 @@ def main():
                     screen.blit(ptext5,(0,212))
                     
                 elif currentState == 'pone':
-                    pName = listFont.render(get_pname(pCurrent), False, BLACK)
+                    pName = listFont.render(get_poke_name(pCurrent), False, BLACK)
                     
                     
                 elif currentState == 'ptwo':
@@ -79,7 +79,24 @@ def main():
 		fpsClock.tick(10000)
 
     
-   
+def get_poke_name(pId):
+    
+def import_plist():
+    
+
+class Pokemon:
+    
+    def __init__(self, info):
+        self.id = info[0]
+        self.name = info[1]
+        self.image = self.id + '.png'
+        self.cry = self.id + '.ogg'
+        self.type1 = info[2]
+        self.type2 = info[3]
+        self.desc = info[4]
+        
+        
+
 from . import poke_pins
 class PokeButtons:
 
@@ -104,19 +121,3 @@ class PokeButtons:
     def get_poke_names(pList):
     
     def get_poke_deets(pId):
-    
-    def go_up():
-        if pShowList:
-            decrement_plist()
-        elif pShowOne:
-        elif pShowTwo:
-    
-    def go_down():
-        if pShowList:
-            increment_plist()
-        elif pShowOne:
-        elif pShowTwo:
-    
-    def go_left():
-    
-    def go_okay():
