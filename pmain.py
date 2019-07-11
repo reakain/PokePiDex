@@ -4,10 +4,12 @@ import poke_audio_control
 import poke_data_handle
 import poke_buttons
 import pygame
+from gpiozero import Button
 
-pShowList = true
-pShowOne = false
-pShowTwo = false
+up = Button(2)
+left = Button(3)
+right = Button(4)
+down = Button(14)
 
 XDIM = 176
 YDIM = 264
@@ -32,11 +34,9 @@ def main():
     currentState = 'plist'
     
     while(true):
-        if currentState == 'plist':
-        elif currentState == 'pone':
-        elif currentState == 'ptwo':
+        #handle button events
+        if up.is_pressed:
         
-        #handle events
 		for e in pygame.event.get():
 			if e.type == KEYUP && pCurrent != 1:
                 pCurrent = pCurrent - 1
@@ -58,15 +58,22 @@ def main():
                     
                     
                 elif currentState == 'ptwo':
-                #pygame.display.update()
-            elif e.key == KEYDOWN:
-                pygame.display.update()
-            elif e.key == KEYLEFT:
-                pygame.display.update()
-            elif e.key == KEYRIGHT:
-                pygame.display.update()
+                
+            elif e.key == KEYDOWN && pCurrent != pList.len():
+                pCurrent = pCurrent + 1
+                # call the state render function
+                
+            elif e.key == KEYLEFT && currentState != 'plist':
+                # call the state render function
+                
+            elif e.key == KEYRIGHT && currentState != 'ptwo':
+                # call the state render function
+                
             elif e.key == K_OKAY:
-                pygame.display.update()
+                if currentState == 'plist':
+                    # render pone on current poke
+                elif (currentState == 'pone' || currentState == 'ptwo'):
+                    # play poke audio
 
 		
 		fpsClock.tick(10000)
