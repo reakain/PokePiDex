@@ -6,6 +6,7 @@ import poke_buttons
 import pygame
 from gpiozero import Button
 
+# https://sourceforge.net/p/raspberry-gpio-python/wiki/Inputs/#pull-up-pull-down-resistors
 up = Button(2)
 left = Button(3)
 right = Button(4)
