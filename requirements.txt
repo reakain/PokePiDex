@@ -1,5 +1,7 @@
-adafruit-circuitpython-blinka
-adafruit-circuitpython-framebuf
-adafruit-circuitpython-bitmap-font
-adafruit-circuitpython-epd
+RPI.GPIO==0.6.5
+gpiozero==1.5.1
+adafruit-blinka==2.1.6
+adafruit-circuitpython-framebuf==1.1.0
+adafruit-circuitpython-bitmap-font==1.0.3
+adafruit-circuitpython-epd==2.3
 

@@ -10,18 +10,18 @@ from adafruit_epd.ssd1675 import Adafruit_SSD1675 # pylint: disable=unused-impor
 
 # create the spi device and pins we will need
 spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
-ecs = digitalio.DigitalInOut(board.D12)
-dc = digitalio.DigitalInOut(board.D16)
-srcs = digitalio.DigitalInOut(board.D6) # can be None to use internal memory
-rst = digitalio.DigitalInOut(board.D13) # can be None to not use this pin
-#busy = digitalio.DigitalInOut(board.D5) # can be Nine to not use this pin
+ecs = digitalio.DigitalInOut(board.D8)
+dc = digitalio.DigitalInOut(board.D22)
+srcs = None #digitalio.DigitalInOut(board.D7) # can be None to use internal memory
+rst = digitalio.DigitalInOut(board.D24) # can be None to not use this pin
+busy = digitalio.DigitalInOut(board.D25) # can be Nine to not use this pin
 
 # give them all to our driver
 print("Creating display")
 #display = Adafruit_SSD1608(200, 200, spi,             # 1.54" HD monochrome display
 display = Adafruit_IL0373(104, 212, spi,               # 2.13" Tri-color display
                            cs_pin=ecs, dc_pin=dc, sramcs_pin=srcs,
-                           rst_pin=rst, busy_pin=None) #busy_pin=busy)
+                           rst_pin=rst, busy_pin=busy)
 
 # IF YOU HAVE A FLEXIBLE DISPLAY (2.13" OR 2.9") uncommeny these lines!
 display.set_black_buffer(1, False)
@@ -44,4 +44,6 @@ display.line(0, display.height-1, display.width-1, 0, Adafruit_EPD.RED)
 
 #print("Draw text")
 #display.text('hello world', 25, 10, Adafruit_EPD.BLACK)
+
+print("Update display")
 display.display()
