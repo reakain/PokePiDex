@@ -10,7 +10,7 @@ from adafruit_epd.ssd1675 import Adafruit_SSD1675 # pylint: disable=unused-impor
 
 # create the spi device and pins we will need
 spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
-ecs = digitalio.DigitalInOut(board.D8)
+ecs = digitalio.DigitalInOut(board.D4)
 dc = digitalio.DigitalInOut(board.D22)
 srcs = None #digitalio.DigitalInOut(board.D7) # can be None to use internal memory
 rst = digitalio.DigitalInOut(board.D24) # can be None to not use this pin
