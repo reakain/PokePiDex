@@ -24,6 +24,7 @@ Raspberry Pi Zero Pokedex
 - 10nF-33nF capacitor
 - 150 ohm resistor
 - 270 ohm resistor
+- 10uF capacitor
 
 ## Info
 - `setup.sh` script sets up raspberry pi settings, not tested yet
