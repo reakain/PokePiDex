@@ -4,4 +4,4 @@ adafruit-blinka==2.1.6
 adafruit-circuitpython-framebuf==1.1.0
 adafruit-circuitpython-bitmap-font==1.0.3
 adafruit-circuitpython-epd==2.3
-numpy==1.16.4
+numpy==1.22.0
